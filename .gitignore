@@ -1,0 +1,28 @@
+# =========================
+# Build artifacts
+# =========================
+build/
+build_*/
+*.map
+*.elf
+*.bin
+*.hex
+
+# =========================
+# ESP-IDF specific
+# =========================
+sdkconfig
+sdkconfig.old
+sdkconfig.defaults.old
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Ninja / Make
+*.ninja
+.ninja_log
+.ninja_deps
+Makefile
