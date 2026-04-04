@@ -6,4 +6,5 @@ idf_component_register(
     "screen.c"
     "uart_utils.c"
     "lvgl_utils.c"
+    PRIV_REQUIRES esp_adc spi_flash
     INCLUDE_DIRS ".")
