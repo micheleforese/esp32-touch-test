@@ -5,10 +5,11 @@
 #include "esp_lcd_panel_vendor.h"
 #include "esp_lcd_touch_cst816s.h"
 #include "esp_log.h"
-#include "lvgl_ui.h"
+#include "lvgl_utils.h"
 
 #define PIN_NUM_LCD_SCLK 39
 #define PIN_NUM_LCD_MOSI 38
+#define PIN_NUM_LCD_MISO 40
 
 #define SPI_HOST SPI2_HOST
 
@@ -31,6 +32,8 @@
 #define LCD_H_RES 240
 #define LCD_BUF_HEIGHT 40
 #define LCD_BUF_LENGTH (LCD_H_RES * LCD_BUF_HEIGHT)
+#define LCD_MAX_TRANSFER_SIZE                                                                      \
+    (LCD_BUF_LENGTH * 2 + 8) // 2 bytes per pixel + some extra for commands
 
 #define PIN_NUM_BK_LIGHT 1
 

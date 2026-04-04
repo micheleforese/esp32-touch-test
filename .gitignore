@@ -14,6 +14,7 @@ build_*/
 sdkconfig
 sdkconfig.old
 sdkconfig.defaults.old
+managed_components/
 
 # CMake
 CMakeFiles/
@@ -26,3 +27,6 @@ compile_commands.json
 .ninja_log
 .ninja_deps
 Makefile
+
+# Editor specific
+.vscode/

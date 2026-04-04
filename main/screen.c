@@ -27,10 +27,10 @@ void display_init(void)
     ESP_LOGI(TAG_SCREEN, "SPI BUS init");
     spi_bus_config_t buscfg = {.sclk_io_num = PIN_NUM_LCD_SCLK,
                                .mosi_io_num = PIN_NUM_LCD_MOSI,
-                               .miso_io_num = -1,
+                               .miso_io_num = PIN_NUM_LCD_MISO,
                                .quadwp_io_num = -1,
                                .quadhd_io_num = -1,
-                               .max_transfer_sz = 320 * 240 * 2 + 8};
+                               .max_transfer_sz = LCD_MAX_TRANSFER_SIZE};
     ESP_ERROR_CHECK(spi_bus_initialize(SPI_HOST, &buscfg, SPI_DMA_CH_AUTO));
 
     ESP_LOGI(TAG_SCREEN, "Install panel IO");

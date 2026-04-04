@@ -15,7 +15,7 @@ lv_obj_t *label_gpio_read_ADC;
 static adc_oneshot_unit_handle_t adc_handle = NULL;
 static adc_cali_handle_t adc_cali_handle = NULL;
 
-void init_adc(void)
+void adc_init(void)
 {
     // 1. Inizializza il driver ADC One-Shot
     adc_oneshot_unit_init_cfg_t init_cfg = {
@@ -44,7 +44,7 @@ void init_adc(void)
     }
 }
 
-void read_adc_task(void *arg)
+void adc_read_task(void *arg)
 {
     while (1)
     {

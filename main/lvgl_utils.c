@@ -1,4 +1,4 @@
-#include "lvgl_ui.h"
+#include "lvgl_utils.h"
 #include "bsp_qmi8658_utils.h"
 #include "esp_timer.h"
 #include "lvgl.h"

@@ -2,7 +2,7 @@
 
 #include "bsp_qmi8658.h"
 #include "lvgl.h"
-#include "lvgl_ui.h"
+#include "lvgl_utils.h"
 
 extern lv_obj_t *label_accel_x;
 extern lv_obj_t *label_accel_y;

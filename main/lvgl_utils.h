@@ -16,7 +16,6 @@
 #define LVGL_TASK_MAX_DELAY_MS 500
 #define LVGL_TASK_MIN_DELAY_MS 1
 
-#define LV_DRAW_COMPLEX 1
 #define LV_USE_ANTIALIAS 1
 
 #define NUM_LABELS (3)

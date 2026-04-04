@@ -4,7 +4,7 @@
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "lvgl_ui.h"
+#include "lvgl_utils.h"
 
 #define UART_NUM UART_NUM_1
 #define UART_PIN_TX (GPIO_NUM_43)

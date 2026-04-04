@@ -7,11 +7,11 @@
 #include <inttypes.h>
 #include <stdio.h>
 
-#include "esp_chip_info.h"
-#include "esp_flash.h"
-#include "esp_system.h"
-#include "esp_timer.h"
 #include "sdkconfig.h"
+#include <esp_chip_info.h>
+#include <esp_flash.h>
+#include <esp_system.h>
+#include <esp_timer.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -31,8 +31,6 @@
 #include "uart_utils.h"
 
 #include "config.h"
-
-#include "esp_psram.h"
 
 #include "adc.h"
 
@@ -64,19 +62,6 @@ void print_esp_info(void)
     printf("Minimum free heap size: %" PRIu32 " bytes\n", esp_get_minimum_free_heap_size());
 }
 
-void test_spiram_psram(void)
-{
-    if (esp_psram_init() == ESP_OK)
-    {
-        ESP_LOGI("PSRAM", "PSRAM inizializzata correttamente.");
-        ESP_LOGI("PSRAM", "Dimensione PSRAM: %d bytes", esp_psram_get_size());
-    }
-    else
-    {
-        ESP_LOGE("PSRAM", "Errore nell'inizializzazione della PSRAM.");
-    }
-}
-
 void gpio_init(void)
 {
     // Configure pin as output
@@ -98,6 +83,7 @@ void gpio_init(void)
 void app_main(void)
 {
     lvgl_api_mux = xSemaphoreCreateRecursiveMutex();
+    setenv("TZ", "CET-1CEST,M3.5.0/2,M10.5.0/3", 1);
 
     print_esp_info();
     gpio_init();
@@ -105,7 +91,7 @@ void app_main(void)
     lv_init();
     display_init();
     touch_init();
-    init_adc();
+    adc_init();
     ESP_ERROR_CHECK(bsp_qmi8658_init());
     lvgl_tick_timer_init(LVGL_TICK_PERIOD_MS);
     lv_port_disp_init();
@@ -121,5 +107,5 @@ void app_main(void)
         lvgl_unlock();
     }
     xTaskCreatePinnedToCore(task, "bsp_lv_port_task", 1024 * 20, NULL, 5, NULL, 1);
-    xTaskCreate(read_adc_task, "read_adc_task", 2048, NULL, 5, NULL);
+    xTaskCreate(adc_read_task, "adc_read_task", 2048, NULL, 5, NULL);
 }
