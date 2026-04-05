@@ -8,6 +8,8 @@
 #include "lvgl.h" // se usi LVGL
 #include <stdio.h>
 
+const char *TAG = "adc";
+
 #define ADC_CHANNEL ADC_CHANNEL_3 // GPIO4
 #define ADC_UNIT ADC_UNIT_1
 
